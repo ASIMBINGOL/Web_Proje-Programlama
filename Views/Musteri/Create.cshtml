@@ -1,0 +1,30 @@
+@model Musteri
+
+ <h2>Müşterimiz Olun Ve Saçınızın Değişimine İnanın</h2>
+ <hr>
+<form asp-asp-controller="Musteri" asp-action="Create" method="post">
+<div class="mb-3">
+     <label asp-for="MUsteriAd" class="form-label">Adınız</label>
+     <input type="text" asp-for="MUsteriAd" class="form-control">
+</div>
+<div class="mb-3">
+     <label asp-for="MUsteriSoyad" class="form-label">Soyadınız</label>
+     <input type="text" asp-for="MUsteriSoyad" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriEmail" class="form-label">Epostanız</label>
+     <input type="text" asp-for="MUsteriEmail" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriTelefon" class="form-label">Telefonunuz</label>
+     <input type="text" asp-for="MUsteriTelefon" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriSifre" class="form-label">Şifreniz</label>
+     <input type="text" asp-for="MUsteriSifre" class="form-control">
+</div>
+<button type="submit" class="btn btn-primary">Kayıt Ol</button>
+</form>

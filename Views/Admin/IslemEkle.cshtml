@@ -1,0 +1,16 @@
+@model Islemler
+
+ <h2>Islem Ekle</h2>
+ <hr>
+<form asp-asp-controller="Admin" asp-action="IslemEkle" method="post">
+<div class="mb-3">
+     <label asp-for="IslemAdi" class="form-label">İşlem Adı</label>
+     <input type="text" asp-for="IslemAdi" class="form-control">
+</div>
+<div class="mb-3">
+     <label asp-for="Ucret" class="form-label">İşlem Ücreti</label>
+     <input type="text" asp-for="Ucret" class="form-control">
+</div>
+
+<button type="submit" class="btn btn-primary">İşlem Ekle</button>
+</form>

@@ -1,0 +1,18 @@
+@model LogInViewModel
+
+
+<h2>Giriş</h2>
+ <hr>
+<form asp-asp-controller="logIn" asp-action="Login" method="post">
+<div class="mb-3">
+     <label asp-for="Email" class="form-label">Email</label>
+     <input type="text" asp-for="Email" class="form-control">
+</div>
+<div class="mb-3">
+     <label asp-for="Sifre" class="form-label">Soyadınız</label>
+     <input type="text" asp-for="Sifre" class="form-control">
+</div>
+
+<
+<button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

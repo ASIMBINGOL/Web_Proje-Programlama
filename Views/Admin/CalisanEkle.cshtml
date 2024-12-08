@@ -1,0 +1,38 @@
+@model Calisan
+
+ <h2>Çalışan Ekle</h2>
+ <hr>
+<form asp-asp-controller="Admin" asp-action="CalisanEkle" method="post">
+<div class="mb-3">
+     <label asp-for="CalisanAd" class="form-label">Çalışan Adı</label>
+     <input type="text" asp-for="CalisanAd" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="CalisanSoyad" class="form-label">Çalışan Soyadı</label>
+     <input type="text" asp-for="CalisanSoyad" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="CalisanTelefon" class="form-label">Çalışan Telefonu</label>
+     <input type="text" asp-for="CalisanTelefon" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="CalisanEmail" class="form-label">Email</label>
+     <input type="text" asp-for="CalisanEmail" class="form-control">
+</div>
+
+<div class="mb-3">
+     <label asp-for="IslemID" class="form-label">İşlemler</label>
+     <select asp-for="IslemID" asp-items="ViewBag.IslemlerListe" class="form-select">
+           <option value="">Seçiniz</option>
+     </select>
+</div>
+
+<div class="mb-3">
+     <label asp-for="Aciklama" class="form-label">Çalışan Bilgisi</label>
+     <input type="text-area" asp-for="Aciklama" class="form-control">
+</div>
+<button type="submit" class="btn btn-primary">Çalışan Ekle</button>
+</form>

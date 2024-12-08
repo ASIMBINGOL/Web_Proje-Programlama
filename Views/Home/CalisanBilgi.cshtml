@@ -1,0 +1,28 @@
+@model IEnumerable<Calisan>
+
+<h2>Çalışanlarımız ve Uzmanlık Alanları</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 150px;">@Html.DisplayNameFor(m=>m.CalisanAd)</th>
+            <th>@Html.DisplayNameFor(m=>m.CalisanSoyad)</th>
+            
+            <th>@Html.DisplayNameFor(m=>m.Aciklama)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>item.CalisanAd)</td>
+                <td>@Html.DisplayFor(modelItem=>item.CalisanSoyad)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Aciklama)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CalisanID" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.CalisanID" class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 
