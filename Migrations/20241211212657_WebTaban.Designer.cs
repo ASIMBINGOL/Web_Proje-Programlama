@@ -11,14 +11,29 @@ using Web_Proje.Models;
 namespace Web_Proje.Migrations
 {
     [DbContext(typeof(KuaforContext))]
-    [Migration("20241208141226_WebTaban2")]
-    partial class WebTaban2
+    [Migration("20241211212657_WebTaban")]
+    partial class WebTaban
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+
+            modelBuilder.Entity("CalisanIslemler", b =>
+                {
+                    b.Property<int>("calisansCalisanID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("islemlersIslemID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("calisansCalisanID", "islemlersIslemID");
+
+                    b.HasIndex("islemlersIslemID");
+
+                    b.ToTable("CalisanIslemler");
+                });
 
             modelBuilder.Entity("Web_Proje.Models.Admin", b =>
                 {
@@ -44,6 +59,7 @@ namespace Web_Proje.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Aciklama")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CalisanAd")
@@ -65,31 +81,9 @@ namespace Web_Proje.Migrations
                     b.Property<int>("IslemID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("islemlerIslemID")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("CalisanID");
 
-                    b.HasIndex("islemlerIslemID");
-
                     b.ToTable("Calisanlar");
-                });
-
-            modelBuilder.Entity("Web_Proje.Models.CalisanIslem", b =>
-                {
-                    b.Property<int>("CalisanIslemID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CalisanID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IslemID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("CalisanIslemID");
-
-                    b.ToTable("CalisanIslemleri");
                 });
 
             modelBuilder.Entity("Web_Proje.Models.CalismaMesai", b =>
@@ -182,7 +176,7 @@ namespace Web_Proje.Migrations
                     b.Property<int>("MusteriID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Saat")
+                    b.Property<TimeSpan>("Saat")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Tarih")
@@ -193,15 +187,19 @@ namespace Web_Proje.Migrations
                     b.ToTable("Randevular");
                 });
 
-            modelBuilder.Entity("Web_Proje.Models.Calisan", b =>
+            modelBuilder.Entity("CalisanIslemler", b =>
                 {
-                    b.HasOne("Web_Proje.Models.Islemler", "islemler")
+                    b.HasOne("Web_Proje.Models.Calisan", null)
                         .WithMany()
-                        .HasForeignKey("islemlerIslemID")
+                        .HasForeignKey("calisansCalisanID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("islemler");
+                    b.HasOne("Web_Proje.Models.Islemler", null)
+                        .WithMany()
+                        .HasForeignKey("islemlersIslemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

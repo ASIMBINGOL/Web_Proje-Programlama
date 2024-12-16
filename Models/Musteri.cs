@@ -8,26 +8,26 @@ namespace Web_Proje.Models
 
         [Display(Name ="Adınız")]
         [Required(ErrorMessage ="Lütfen Adınızı Giriniz")]
-        public string? MUsteriAd { get; set; }
+        public string MUsteriAd { get; set; }=null!;
                                                            //Müşteri ekleme kayıt olma ve login
         [Display(Name ="Soyadınız")]
         [Required(ErrorMessage ="Lütfen Soyadınızı Giriniz")]
-        public string? MUsteriSoyad { get; set; }
+        public string MUsteriSoyad { get; set; }=null!;
 
         [Display(Name ="Telefon")]
         [Required(ErrorMessage ="Lütfen Telefon Numaranızı Giriniz")]
         [DataType(DataType.PhoneNumber)]
 
-        public string? MUsteriTelefon { get; set; }
+        public string MUsteriTelefon { get; set; }=null!;
         [Display(Name ="Email")]
         [Required(ErrorMessage ="Lütfen Email Giriniz")]
         [EmailAddress(ErrorMessage ="Lütfen Geçerli Bir Mail Adresi Gİriniz")]
-        public string? MUsteriEmail { get; set; }
+        public string MUsteriEmail { get; set; }=null!;
 
         [Display(Name ="Şifre")]
         [Required(ErrorMessage ="Lütfen Şifre Giriniz")]
         [DataType(DataType.Password)]
-        public string? MUsteriSifre { get; set; }
+        public string MUsteriSifre { get; set; }=null!;
 
         [Display(Name ="Kayıt Tarihi")]
         [DataType(DataType.Date)]//Sadece tarih

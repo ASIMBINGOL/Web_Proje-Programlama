@@ -18,6 +18,75 @@ namespace Web_Proje.Controllers
             return View();
        } 
 
+       public async Task<IActionResult> IslemListele()
+       {
+            return View(await _context.Islemler.ToListAsync());
+       }
+
+    
+    public async Task <IActionResult> CalisanListele()
+      { 
+        var clsnListe=(from c in _context.Calisanlar
+                      join i in _context.Islemler
+                      on c.IslemID equals i.IslemID
+                      select new CalisanIslemModel
+                      {
+                              CalisanID = c.CalisanID,
+                              CalisanAd = c.CalisanAd,
+                              CalisanSoyad = c.CalisanSoyad,
+                              Aciklama=c.Aciklama,               //İŞlemi çalışanda gösterme
+                              CalisanTelefon = c.CalisanTelefon,
+                              CalisanEmail = c.CalisanEmail,
+                              IslemAdi = i.IslemAdi  // İşlem adını alıyoruz
+                          }).ToListAsync();
+                return View(await clsnListe); 
+      }
+
+        
+
+       [HttpGet]
+        public async Task<IActionResult>CalisanEdit(int? id)
+        {
+
+            ViewBag.IslemlerListe= new SelectList(await _context.Islemler.ToListAsync(),"IslemID","IslemAdi");
+            if(id==null){return NotFound();}
+             var calisanedit =await _context.Calisanlar.FirstOrDefaultAsync(o=>o.CalisanID==id);
+              // var ogr =await _context.Ogrenciler.FirstOrDefaultAsync(ogrenci =>ogrenci.OgrenciId==id);//başka kriterlere göre arama ilk gelen eşitliği geri dönderir
+            if(calisanedit==null){return NotFound();}
+            return View(calisanedit);
+        }
+
+        
+        [HttpPost]
+        public async Task<IActionResult>CalisanEdit(int id,Calisan model)
+        {
+          if(id!=model.CalisanID)
+          {
+            return NotFound();
+          }
+          if(ModelState.IsValid)
+          {
+            try
+            {   
+                _context.Update(model);//değişiklikleri yap
+                await _context.SaveChangesAsync();//veri tabanına uygula
+
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if(!_context.Calisanlar.Any(o=>o.CalisanID==model.CalisanID)){
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+           return RedirectToAction("CalisanListele");
+          }
+          return View(model);
+        }
+
         public async Task<IActionResult>CalisanEKle()
         {
             ViewBag.IslemlerListe= new SelectList(await _context.Islemler.ToListAsync(),"IslemID","IslemAdi");
@@ -35,6 +104,7 @@ namespace Web_Proje.Controllers
 
         public IActionResult IslemEKle()
         {
+            //ViewBag.Calisanlae=new SelectList()
             return View();
         }
 
@@ -46,5 +116,73 @@ namespace Web_Proje.Controllers
             return RedirectToAction("Index","Admin");
                     //deneme repo
         }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult>IslemEdit(int? id)
+        {
+            ViewBag.IslemlerListe= new SelectList(await _context.Islemler.ToListAsync(),"IslemAdi","IslemAdi");
+            if(id==null){return NotFound();}
+             var IslemEdit =await _context.Islemler.FirstOrDefaultAsync(o=>o.IslemID==id);
+              // var ogr =await _context.Ogrenciler.FirstOrDefaultAsync(ogrenci =>ogrenci.OgrenciId==id);//başka kriterlere göre arama ilk gelen eşitliği geri dönderir
+            if(IslemEdit==null){return NotFound();}
+            return View(IslemEdit);
+        }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>IslemEdit(int id,Islemler model)
+        {
+          if(id!=model.IslemID)
+          {
+            return NotFound();
+          }
+          if(ModelState.IsValid)
+          {
+            try
+            {   
+                _context.Update(model);//değişiklikleri yap
+                await _context.SaveChangesAsync();//veri tabanına uygula
+
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if(!_context.Islemler.Any(o=>o.IslemID==model.IslemID)){
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+           return RedirectToAction("IslemListele","Admin");
+          }
+          return View(model);
+        }
+    
+       [HttpGet]
+       public async Task<IActionResult>IslemDelete(int? id)
+       {
+        if(id==null){
+            return NotFound();
+        }
+        var IslemDelete =await _context.Islemler.FindAsync(id);
+        if(IslemDelete==null) {return NotFound();}
+        return View(IslemDelete);
+       }
+
+       [HttpPost]
+       
+       public async Task<IActionResult>IslemDelete([FromForm] int id)
+       {
+        var IslemDelete=await _context.Islemler.FindAsync(id);
+        if(IslemDelete==null){return NotFound();}
+        _context.Islemler.Remove(IslemDelete);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Index");
+       }
     }
 }   

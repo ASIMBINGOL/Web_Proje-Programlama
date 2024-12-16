@@ -1,0 +1,9 @@
+@model Islemler
+<b>@Model.IslemAdi</b> hizmetini silmek istiyor musunz?
+<p>
+<form action="IslemDelete" method="post">
+ <input type="hidden" value="@Model.IslemID" name="id">
+ <button type="submit" class="btn btn-danger">Evet</button>
+ <button asp-action="Index" class="btn btn-primary">Hayır</button>
+</form>
+</p>

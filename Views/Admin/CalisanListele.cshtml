@@ -1,0 +1,30 @@
+@model IEnumerable<CalisanIslemModel>
+<h2>Çalışan Listesi</h2>
+ <a href="/Admin/IslemEkle" class="btn btn-primary">İşlem Ekle</a>
+ <hr>
+   <table class="table table-bordered">
+     <thead>
+        <tr>
+            <th style="width: 150px;">@Html.DisplayNameFor(m =>m.AdSoyad)</th><!--Model Üzerinde sütun isime erişme altta ise direk modelin değerine erişme-->
+            <th>@Html.DisplayNameFor(m =>m.CalisanEmail)</th>
+            <th>@Html.DisplayNameFor(m =>m.CalisanTelefon)</th>
+            <th>@Html.DisplayNameFor(m =>m.Aciklama)</th>
+            <th>@Html.DisplayNameFor(m =>m.IslemAdi)</th>
+            <th style="width: 150px;"></th>
+
+        </tr>
+    </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {<tr>
+                <td>@Html.DisplayFor(modelItem=>item.AdSoyad)</td>
+                <td>@Html.DisplayFor(modelItem=>item.CalisanEmail)</td> 
+                <td>@Html.DisplayFor(modelItem=>item.CalisanTelefon)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Aciklama)</td>
+                <td>@Html.DisplayFor(modelItem=>item.IslemAdi)</td>
+                <td><a asp-controller="Admin" asp-action="CalisanSil" asp-route-id="@item.CalisanID" class="btn btn-primary">Delete</a>
+                <a asp-controller="Admin" asp-action="CalisanEdit" asp-route-id="@item.CalisanID" class="btn btn-sm btn-danger">Edit</a></td> 
+            </tr>
+            }
+        </tbody>
+   </table> 

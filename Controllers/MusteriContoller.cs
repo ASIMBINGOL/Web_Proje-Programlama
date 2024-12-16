@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -26,20 +27,19 @@ namespace Web_Proje.Controllers
         [HttpPost]
         public async Task<IActionResult>Create(Musteri model)
         {
-    
-          _context.Musteri.Add(model); 
-          await _context.SaveChangesAsync();
-          return RedirectToAction("Index");
-
-        }
-
-        public IActionResult RandevuAl()
+        if (ModelState.IsValid)
         {
-            ViewBag.CalisanlarList=new SelectList(_context.Calisanlar.ToList(),"CalisanID","AdSoyad");
-          
-            return View();
-
+        // Veritabanına kaydetme işlemi
+        model.KayitTarihi=DateTime.Now;
+        _context.Musteri.Add(model);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index");
+        }
+        return View(model);
         }
 
-}
+
+  
+
+    }
 }

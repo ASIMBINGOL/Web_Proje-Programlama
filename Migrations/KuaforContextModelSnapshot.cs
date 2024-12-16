@@ -17,6 +17,21 @@ namespace Web_Proje.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
+            modelBuilder.Entity("CalisanIslemler", b =>
+                {
+                    b.Property<int>("calisansCalisanID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("islemlersIslemID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("calisansCalisanID", "islemlersIslemID");
+
+                    b.HasIndex("islemlersIslemID");
+
+                    b.ToTable("CalisanIslemler");
+                });
+
             modelBuilder.Entity("Web_Proje.Models.Admin", b =>
                 {
                     b.Property<int>("AdminId")
@@ -158,7 +173,7 @@ namespace Web_Proje.Migrations
                     b.Property<int>("MusteriID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Saat")
+                    b.Property<TimeSpan>("Saat")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Tarih")
@@ -167,6 +182,21 @@ namespace Web_Proje.Migrations
                     b.HasKey("RandevuID");
 
                     b.ToTable("Randevular");
+                });
+
+            modelBuilder.Entity("CalisanIslemler", b =>
+                {
+                    b.HasOne("Web_Proje.Models.Calisan", null)
+                        .WithMany()
+                        .HasForeignKey("calisansCalisanID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Web_Proje.Models.Islemler", null)
+                        .WithMany()
+                        .HasForeignKey("islemlersIslemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

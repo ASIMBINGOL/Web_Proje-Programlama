@@ -13,5 +13,11 @@ namespace Web_Proje.Models
         [Display(Name ="Ücret")]                                  //Daha çok Admin ekleme ve müşteriye bilgi verme amaçlı
         [Required(ErrorMessage ="Lütfen Ücret Bilgsini Gİriniz")]
         public int Ucret { get; set; }
+        
+
+        public ICollection<Calisan>? calisans { get; set; }
+
+
+       
     }
 }

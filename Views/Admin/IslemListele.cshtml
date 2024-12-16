@@ -1,0 +1,26 @@
+@model IEnumerable<Islemler>
+ <h2>Islem Listesi</h2>
+ <a href="/Admin/IslemEkle" class="btn btn-primary">İşlem Ekle</a>
+ <hr>
+   <table class="table table-bordered">
+     <thead>
+        <tr>
+            <th style="width: 150px;">@Html.DisplayNameFor(m =>m.IslemID)</th><!--Model Üzerinde sütun isime erişme altta ise direk modelin değerine erişme-->
+            <th>@Html.DisplayNameFor(m =>m.IslemAdi)</th>
+            <th>@Html.DisplayNameFor(m =>m.Ucret)</th>
+            <th style="width: 150px;"></th>
+
+        </tr>
+    </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {<tr>
+                <td>@Html.DisplayFor(modelItem=>item.IslemID)</td>
+                <td>@Html.DisplayFor(modelItem=>item.IslemAdi)</td> 
+                <td>@Html.DisplayFor(modelItem=>item.Ucret)</td>
+                <td><a asp-controller="Admin" asp-action="IslemDelete" asp-route-id="@item.IslemID" class="btn btn-primary">Delete</a>
+                <a asp-controller="Admin" asp-action="IslemEdit" asp-route-id="@item.IslemID" class="btn btn-sm btn-danger">Edit</a></td> 
+            </tr>
+            }
+        </tbody>
+   </table> 

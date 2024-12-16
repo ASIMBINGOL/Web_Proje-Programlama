@@ -26,20 +26,6 @@ namespace Web_Proje.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CalisanIslemleri",
-                columns: table => new
-                {
-                    CalisanIslemID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    CalisanID = table.Column<int>(type: "INTEGER", nullable: false),
-                    IslemID = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CalisanIslemleri", x => x.CalisanIslemID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Calisanlar",
                 columns: table => new
                 {
@@ -49,7 +35,8 @@ namespace Web_Proje.Migrations
                     CalisanSoyad = table.Column<string>(type: "TEXT", nullable: false),
                     CalisanTelefon = table.Column<string>(type: "TEXT", nullable: false),
                     CalisanEmail = table.Column<string>(type: "TEXT", nullable: false),
-                    UzmanlikAlani = table.Column<string>(type: "TEXT", nullable: false)
+                    Aciklama = table.Column<string>(type: "TEXT", nullable: false),
+                    IslemID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,12 +101,41 @@ namespace Web_Proje.Migrations
                     CalisanID = table.Column<int>(type: "INTEGER", nullable: false),
                     IslemID = table.Column<int>(type: "INTEGER", nullable: false),
                     Tarih = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Saat = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Saat = table.Column<TimeSpan>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Randevular", x => x.RandevuID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CalisanIslemler",
+                columns: table => new
+                {
+                    calisansCalisanID = table.Column<int>(type: "INTEGER", nullable: false),
+                    islemlersIslemID = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CalisanIslemler", x => new { x.calisansCalisanID, x.islemlersIslemID });
+                    table.ForeignKey(
+                        name: "FK_CalisanIslemler_Calisanlar_calisansCalisanID",
+                        column: x => x.calisansCalisanID,
+                        principalTable: "Calisanlar",
+                        principalColumn: "CalisanID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CalisanIslemler_Islemler_islemlersIslemID",
+                        column: x => x.islemlersIslemID,
+                        principalTable: "Islemler",
+                        principalColumn: "IslemID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CalisanIslemler_islemlersIslemID",
+                table: "CalisanIslemler",
+                column: "islemlersIslemID");
         }
 
         /// <inheritdoc />
@@ -129,22 +145,22 @@ namespace Web_Proje.Migrations
                 name: "Admin");
 
             migrationBuilder.DropTable(
-                name: "CalisanIslemleri");
-
-            migrationBuilder.DropTable(
-                name: "Calisanlar");
+                name: "CalisanIslemler");
 
             migrationBuilder.DropTable(
                 name: "CalismaSaatleri");
-
-            migrationBuilder.DropTable(
-                name: "Islemler");
 
             migrationBuilder.DropTable(
                 name: "Musteri");
 
             migrationBuilder.DropTable(
                 name: "Randevular");
+
+            migrationBuilder.DropTable(
+                name: "Calisanlar");
+
+            migrationBuilder.DropTable(
+                name: "Islemler");
         }
     }
 }

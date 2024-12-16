@@ -1,5 +1,4 @@
 C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\appsettings.Development.json
-C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\appsettings.json
 C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\Web_Proje.staticwebassets.runtime.json
 C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\Web_Proje.staticwebassets.endpoints.json
 C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\Web_Proje.exe

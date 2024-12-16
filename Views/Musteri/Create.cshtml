@@ -6,25 +6,33 @@
 <div class="mb-3">
      <label asp-for="MUsteriAd" class="form-label">Adınız</label>
      <input type="text" asp-for="MUsteriAd" class="form-control">
+     <span asp-validation-for="MUsteriAd" class="text-danger"></span>
 </div>
 <div class="mb-3">
      <label asp-for="MUsteriSoyad" class="form-label">Soyadınız</label>
      <input type="text" asp-for="MUsteriSoyad" class="form-control">
+     <span asp-validation-for="MUsteriSoyad" class="text-danger"></span>
 </div>
 
 <div class="mb-3">
      <label asp-for="MUsteriEmail" class="form-label">Epostanız</label>
      <input type="text" asp-for="MUsteriEmail" class="form-control">
+     <span asp-validation-for="MUsteriEmail" class="text-danger"></span>
+     
 </div>
 
 <div class="mb-3">
      <label asp-for="MUsteriTelefon" class="form-label">Telefonunuz</label>
      <input type="text" asp-for="MUsteriTelefon" class="form-control">
+     <span asp-validation-for="MUsteriTelefon" class="text-danger"></span>
+     
 </div>
 
 <div class="mb-3">
      <label asp-for="MUsteriSifre" class="form-label">Şifreniz</label>
      <input type="text" asp-for="MUsteriSifre" class="form-control">
+     <span asp-validation-for="MUsteriSifre" class="text-danger"></span>
+
 </div>
 <button type="submit" class="btn btn-primary">Kayıt Ol</button>
 </form>

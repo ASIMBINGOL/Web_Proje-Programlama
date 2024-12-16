@@ -1,0 +1,23 @@
+@model Islemler
+
+ <h2>İşlem Güncelle</h2>
+ <hr>
+ <div class="row">
+     <div class="col-8">
+          <form asp-asp-controller="Admin" asp-action="IslemEdit" method="post">
+ <input type="hidden" asp-for="IslemID">
+<div class="mb-3">
+     <label asp-for="IslemAdi" class="form-label">İşlem Adı</label>
+     <select type="text" asp-for="IslemAdi" asp-items="ViewBag.IslemlerListe" class="form-select">
+          <option>Seçiniz</option>
+     </select>
+</div>
+<div class="mb-3">
+     <label asp-for="Ucret" class="form-label">Ücret</label>
+     <input type="text" asp-for="Ucret" class="form-control">
+</div>
+
+
+<button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+ 
