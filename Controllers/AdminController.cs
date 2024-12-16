@@ -44,7 +44,7 @@ namespace Web_Proje.Controllers
             _context.Islemler.Add(model);
             await _context.SaveChangesAsync(); //async olduğu için await önemli
             return RedirectToAction("Index","Admin");
-
+                    //deneme repo
         }
     }
 }   
