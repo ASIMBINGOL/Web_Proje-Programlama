@@ -1,48 +1,84 @@
-/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+body[b-ylqpbfx41b] {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light background */
+}
 
-a.navbar-brand[b-ylqpbfx41b] {
-  white-space: normal;
+.navbar[b-ylqpbfx41b] {
+  background-color: #343a40; /* Dark header */
+}
+
+.navbar-brand[b-ylqpbfx41b], .nav-link[b-ylqpbfx41b] {
+  color: #f8f9fa !important; /* Light text */
+}
+
+.hero-section[b-ylqpbfx41b] {
+  background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+  color: #fff;
   text-align: center;
-  word-break: break-all;
+  padding: 100px 20px;
 }
 
-a[b-ylqpbfx41b] {
-  color: #0077cc;
+.hero-section h1[b-ylqpbfx41b] {
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-.btn-primary[b-ylqpbfx41b] {
+.hero-section p[b-ylqpbfx41b] {
+  font-size: 1.25rem;
+  margin: 20px 0;
+}
+
+.hero-section .btn[b-ylqpbfx41b] {
+  background-color: #e91e63; /* Pink button */
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
-.nav-pills .nav-link.active[b-ylqpbfx41b], .nav-pills .show > .nav-link[b-ylqpbfx41b] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.hero-section .btn:hover[b-ylqpbfx41b] {
+  background-color: #d81b60;
 }
 
-.border-top[b-ylqpbfx41b] {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom[b-ylqpbfx41b] {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow[b-ylqpbfx41b] {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+footer[b-ylqpbfx41b] {
+  background-color: #343a40;
+  color: #f8f9fa;
+  padding: 10px 0;
+  text-align: center;
 }
 
-button.accept-policy[b-ylqpbfx41b] {
-  font-size: 1rem;
-  line-height: inherit;
+footer a[b-ylqpbfx41b] {
+  color: #f8f9fa;
 }
 
-.footer[b-ylqpbfx41b] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+.services[b-ylqpbfx41b] {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.services h2[b-ylqpbfx41b] {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.services .card[b-ylqpbfx41b] {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.services .card:hover[b-ylqpbfx41b] {
+  transform: translateY(-10px);
+}
+
+.welcome-section[b-ylqpbfx41b] {
+  background: url('https://m.media-amazon.com/images/S/aplus-media-library-service-media/f1d1ace4-d815-4dcc-8a24-06718d2bb893.__CR0,2,1464,625_PT0_SX1464_V1___.jpg) no-repeat center center/cover'); /* Fotoğrafı buraya yerleştiriyoruz */
+  color: white; /* Yazıyı beyaz yapıyoruz, resme karşı daha belirgin olması için */
+  text-align: center; /* Yazıyı ortaya yerleştiriyoruz */
+  padding: 150px 0; /* Üst ve alt kısımdan boşluk bırakıyoruz */
+}
+
+.welcome-section h1[b-ylqpbfx41b] {
+  font-size: 3rem; /* Yazının büyüklüğünü ayarlıyoruz */
+  font-weight: bold; /* Yazıyı kalın yapıyoruz */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Yazıya gölge ekliyoruz, daha belirgin görünmesini sağlar */
 }

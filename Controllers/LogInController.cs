@@ -18,7 +18,21 @@ namespace Web_Proje.Controllers
 
         public IActionResult Login()
         {
+            if(User.Identity!.IsAuthenticated){
+                var userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+                if(userRole=="user")
+                return RedirectToAction("Index","Home");
+
+                else
+                return RedirectToAction("Index","Admin");
+            }
             return View();
+        }
+        
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index","Home");
         }
 
         [HttpPost]
@@ -35,6 +49,7 @@ namespace Web_Proje.Controllers
                     var kullaniciBilgileri = new List<Claim>();
 
                     kullaniciBilgileri.Add(new Claim(ClaimTypes.NameIdentifier, kullanici.MUsteriID.ToString()));
+                    kullaniciBilgileri.Add(new Claim(ClaimTypes.Name, kullanici.AdSoyad ?? ""));
                     kullaniciBilgileri.Add(new Claim(ClaimTypes.GivenName, kullanici.MUsteriAd ?? ""));
 
                     kullaniciBilgileri.Add(new Claim(ClaimTypes.Role, "user"));
@@ -42,10 +57,10 @@ namespace Web_Proje.Controllers
 
                     var claimsIdentity = new ClaimsIdentity(kullaniciBilgileri, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    var authProperties = new AuthenticationProperties 
-                    {
-                        IsPersistent = true
-                    };
+                    var authProperties = new AuthenticationProperties
+                     {
+                        IsPersistent = false, //tarayıcı kapatıldığında cookiyi sil
+                   };
 
                     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -69,7 +84,7 @@ namespace Web_Proje.Controllers
 
                     var authProperties = new AuthenticationProperties 
                     {
-                        IsPersistent = true
+                        IsPersistent = false
                     };
 
                     await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

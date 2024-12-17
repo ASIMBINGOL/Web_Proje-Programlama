@@ -17,7 +17,12 @@ namespace Web_Proje.Models
         [Display(Name ="Telefon")]
         [Required(ErrorMessage ="Lütfen Telefon Numaranızı Giriniz")]
         [DataType(DataType.PhoneNumber)]
-
+        
+        public string AdSoyad{
+        get
+        {
+            return MUsteriAd+" "+MUsteriSoyad;
+        }}
         public string MUsteriTelefon { get; set; }=null!;
         [Display(Name ="Email")]
         [Required(ErrorMessage ="Lütfen Email Giriniz")]
