@@ -192,8 +192,6 @@ C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\ze928z1wup-2z0ns9nr
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\wehrq5uupi-muycvpuwrr.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\pax12holsf-87fc7y1x7t.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\bk0i7vmbtj-mlv21k5csn.gz
-C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\tepu3oojf4-noistdba2e.gz
-C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\oy5arxx0dd-noistdba2e.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -209,3 +207,5 @@ C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\refint\Web_Proje.dll
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\Web_Proje.pdb
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\Web_Proje.genruntimeconfig.cache
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\ref\Web_Proje.dll
+C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\tepu3oojf4-sjf1gegwmg.gz
+C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\oy5arxx0dd-sjf1gegwmg.gz

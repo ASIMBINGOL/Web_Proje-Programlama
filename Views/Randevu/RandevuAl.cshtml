@@ -1,0 +1,68 @@
+@model RandevuViewModel
+
+<h2>Randevu Al</h2>
+
+<form asp-action="RandevuAl" method="post">
+    <div>
+        <label for="Tarih">Tarih:</label>
+        <input type="date" asp-for="Tarih" required />
+    </div>
+
+    <div>
+        <label for="CalisanID">Çalışan:</label>
+        <select asp-for="CalisanID" id="CalisanID" asp-items="@(new SelectList(ViewBag.Calisanlar, "CalisanID", "AdSoyad"))" required>
+            <option value="">Çalışan Seçin</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="IslemID">Hizmet:</label>
+        <select asp-for="IslemID" id="IslemID" required>
+            <option value="">Hizmet Seçin</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="UygunSaat">Saat:</label>
+        <select asp-for="UygunSaat" id="UygunSaat" required>
+            <option value="">Saat Seçin</option>
+        </select>
+    </div>
+
+    <button type="submit">Randevu Al</button>
+</form>
+
+<script>
+    document.querySelector('#CalisanID').addEventListener('change', function () {
+        const calisanId = this.value;
+
+        if (calisanId) {
+            fetch(`/Randevu/GetHizmetler?calisanId=${calisanId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const hizmetDropdown = document.getElementById("IslemID");
+                    hizmetDropdown.innerHTML = '<option value="">Hizmet Seçin</option>';
+                    data.forEach(hizmet => {
+                        hizmetDropdown.innerHTML += `<option value="${hizmet.IslemID}">${hizmet.IslemAdi}</option>`;
+                    });
+                });
+        }
+    });
+
+    document.querySelector('[asp-for="Tarih"]').addEventListener('change', function () {
+        const tarih = this.value;
+        const calisanId = document.querySelector('#CalisanID').value;
+
+        if (tarih && calisanId) {
+            fetch(`/api/UygunSaatler?calisanId=${calisanId}&tarih=${tarih}&randevuSuresi=60`)
+                .then(response => response.json())
+                .then(data => {
+                    const saatDropdown = document.getElementById("UygunSaat");
+                    saatDropdown.innerHTML = '<option value="">Saat Seçin</option>';
+                    data.forEach(saat => {
+                        saatDropdown.innerHTML += `<option value="${saat}">${saat}</option>`;
+                    });
+                });
+        }
+    });
+</script>
