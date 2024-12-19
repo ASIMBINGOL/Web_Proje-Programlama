@@ -21,5 +21,6 @@ namespace Web_Proje.Models
         [Display(Name ="Randevu Saati")]
         [Required(ErrorMessage ="Lütfen Saat Seçiniz")]
         public TimeSpan Saat{ get; set; }
+        public bool OnayDurumu{ get; set; }
     }
 }

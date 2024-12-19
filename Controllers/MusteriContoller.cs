@@ -20,7 +20,7 @@ namespace Web_Proje.Controllers
         {
             return View();
         }
-         public IActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -36,9 +36,7 @@ namespace Web_Proje.Controllers
         return RedirectToAction("Index");
         }
         return View(model);
-        }
-
-
+        }  
   
 
     }

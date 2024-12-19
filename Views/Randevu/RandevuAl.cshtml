@@ -1,68 +1,48 @@
-@model RandevuViewModel
+@model Randevu
 
 <h2>Randevu Al</h2>
 
-<form asp-action="RandevuAl" method="post">
+<form asp-action="RandevuAl" asp-controller="Randevu" method="post">
     <div>
-        <label for="Tarih">Tarih:</label>
-        <input type="date" asp-for="Tarih" required />
+        <label asp-for="Tarih"></label>
+        <input asp-for="Tarih" type="date" class="form-control" />
+        <span asp-validation-for="Tarih" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Saat"></label>
+        <input asp-for="Saat" type="time" class="form-control" />
+        <span asp-validation-for="Saat" class="text-danger"></span>
     </div>
 
     <div>
         <label for="CalisanID">Çalışan:</label>
-        <select asp-for="CalisanID" id="CalisanID" asp-items="@(new SelectList(ViewBag.Calisanlar, "CalisanID", "AdSoyad"))" required>
+        <select asp-for="CalisanID" class="form-control">
             <option value="">Çalışan Seçin</option>
+            @foreach (var calisan in ViewBag.Calisanlar)
+            {
+                <option value="@calisan.CalisanID">@calisan.AdSoyad</option>
+            }
         </select>
+        <span asp-validation-for="CalisanID" class="text-danger"></span>
     </div>
 
     <div>
         <label for="IslemID">Hizmet:</label>
-        <select asp-for="IslemID" id="IslemID" required>
+        <select asp-for="IslemID" class="form-control">
             <option value="">Hizmet Seçin</option>
+            @foreach (var islem in ViewBag.Islemler)
+            {
+                <option value="@islem.IslemID">@islem.IslemAdi</option>
+            }
         </select>
+        <span asp-validation-for="IslemID" class="text-danger"></span>
     </div>
 
-    <div>
-        <label for="UygunSaat">Saat:</label>
-        <select asp-for="UygunSaat" id="UygunSaat" required>
-            <option value="">Saat Seçin</option>
-        </select>
-    </div>
-
-    <button type="submit">Randevu Al</button>
+    <button type="submit" class="btn btn-primary">Randevu Al</button>
 </form>
 
-<script>
-    document.querySelector('#CalisanID').addEventListener('change', function () {
-        const calisanId = this.value;
-
-        if (calisanId) {
-            fetch(`/Randevu/GetHizmetler?calisanId=${calisanId}`)
-                .then(response => response.json())
-                .then(data => {
-                    const hizmetDropdown = document.getElementById("IslemID");
-                    hizmetDropdown.innerHTML = '<option value="">Hizmet Seçin</option>';
-                    data.forEach(hizmet => {
-                        hizmetDropdown.innerHTML += `<option value="${hizmet.IslemID}">${hizmet.IslemAdi}</option>`;
-                    });
-                });
-        }
-    });
-
-    document.querySelector('[asp-for="Tarih"]').addEventListener('change', function () {
-        const tarih = this.value;
-        const calisanId = document.querySelector('#CalisanID').value;
-
-        if (tarih && calisanId) {
-            fetch(`/api/UygunSaatler?calisanId=${calisanId}&tarih=${tarih}&randevuSuresi=60`)
-                .then(response => response.json())
-                .then(data => {
-                    const saatDropdown = document.getElementById("UygunSaat");
-                    saatDropdown.innerHTML = '<option value="">Saat Seçin</option>';
-                    data.forEach(saat => {
-                        saatDropdown.innerHTML += `<option value="${saat}">${saat}</option>`;
-                    });
-                });
-        }
-    });
-</script>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.13/jquery.validate.unobtrusive.min.js"></script>
+}
