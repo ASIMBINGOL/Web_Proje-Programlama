@@ -2,6 +2,39 @@
 
 <h2>Randevu Al</h2>
 
+<h2>Çalışanlar ve Mesai Bilgileri</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Çalışan Adı</th>
+            <th>Yaptığı İşler</th>
+            <th>Mesai Gün ve Saatleri</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.CalisanlarMesai != null)
+        {
+            foreach (var calisan in ViewBag.CalisanlarMesai)
+            {
+                <tr>
+                    <td>@calisan.AdSoyad</td>
+                    <td>
+                        <ul>
+                            @foreach (var islem in calisan.Islemler)
+                            {
+                                <li>@islem</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <strong>@calisan.Gun:</strong> @calisan.SaatAraligi
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
 <form asp-action="RandevuAl" asp-controller="Randevu" method="post">
     <div>
         <label asp-for="Tarih"></label>
