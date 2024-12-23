@@ -47,7 +47,7 @@ public class RandevuController : Controller
        if (ModelState.IsValid)
         {
          var musteriId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                 // Çalışan seçilen işlemi yapabiliyor mu?
+        // Çalışan seçilen işlemi yapabiliyor mu?
 
 
         var islemYapabiliyorMu = _context.Calisanlar
@@ -63,8 +63,27 @@ public class RandevuController : Controller
             ViewBag.Islemler = _context.Islemler
             .Select(i => new { i.IslemID, i.IslemAdi })
             .ToList();
-            return View("RandevuAl", model); // Kullanıcıyı aynı sayfada hata mesajıyla geri döndür
+            return RedirectToAction("RandevuAl", model); // Kullanıcıyı aynı sayfada hata mesajıyla geri döndür
         }
+
+
+                    var mesaiBilgisi = _context.CalismaSaatleri
+                                       .Where(c => c.CalisanID == model.CalisanID)
+                                       .AsEnumerable() // Veritabanı sorgusunu burada bitirir ve linq sorgusu devam eder.
+                                       .FirstOrDefault(c => model.Saat >= c.SaatBaslangic 
+                                        && model.Saat <= c.SaatBitis);
+
+
+             if (mesaiBilgisi == null)
+             {
+                  // Eğer mesai saatleri içinde değilse, hata mesajı glönder
+                TempData["msj"]="Bu Saat de Çalışanımız Çalışmıyor Ya Çalışanı Ya Da Saati Değişin";
+                return RedirectToAction("RandevuAl",model);
+            }
+
+
+
+
             // Aynı çalışana, aynı tarih ve saatte başka bir randevu varsa hata döndür
             var mevcutRandevu = _context.Randevular
                                 .FirstOrDefault(r =>
@@ -74,7 +93,6 @@ public class RandevuController : Controller
             
             if (mevcutRandevu != null)
             {
-                ModelState.AddModelError("", "Bu saatte başka bir randevu alınmış.");
                 // Çalışanlar ve işlemler listesini tekrar doldur
                  ViewBag.Calisanlar = _context.Calisanlar
                                      .Select(c => new { c.CalisanID, c.AdSoyad })
@@ -83,8 +101,12 @@ public class RandevuController : Controller
                 ViewBag.Islemler = _context.Islemler
                                    .Select(i => new { i.IslemID, i.IslemAdi })
                                    .ToList();
-                return View(model);
+               TempData["msj"]="Bu Saat de Çalışanımız Dolu Lütfen Çalışanı Ya Da Saati Değişin";
+                return RedirectToAction("RandevuAl",model);
             }
+
+
+
 
              model.MusteriID = int.Parse(musteriId);
 

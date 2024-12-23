@@ -1,7 +1,7 @@
 @model Randevu
 
 <h2>Randevu Al</h2>
-
+<div class="alert-danger">@TempData["msj"]</div>
 <h2>Çalışanlar ve Mesai Bilgileri</h2>
 <table class="table table-bordered">
     <thead>
@@ -44,7 +44,7 @@
 
     <div>
         <label asp-for="Saat"></label>
-        <input asp-for="Saat" type="time" class="form-control" />
+        <input asp-for="Saat" type="time" step="3600" class="form-control" />
         <span asp-validation-for="Saat" class="text-danger"></span>
     </div>
 
