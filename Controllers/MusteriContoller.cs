@@ -38,6 +38,6 @@ namespace Web_Proje.Controllers
         return View(model);
         }  
   
-
+        
     }
 }

@@ -22,5 +22,9 @@ namespace Web_Proje.Models
         [Required(ErrorMessage ="Lütfen Saat Seçiniz")]
         public TimeSpan Saat{ get; set; }
         public bool OnayDurumu{ get; set; }
+
+
+        public virtual Calisan? Calisanlar{ get; set; }
+        public virtual Islemler? Islemler{ get; set; }
     }
 }

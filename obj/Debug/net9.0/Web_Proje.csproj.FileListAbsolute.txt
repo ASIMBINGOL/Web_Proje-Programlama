@@ -209,3 +209,4 @@ C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\Web_Proje.genruntimeconfig.cac
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\ref\Web_Proje.dll
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\tepu3oojf4-sjf1gegwmg.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\oy5arxx0dd-sjf1gegwmg.gz
+C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\Newtonsoft.Json.dll

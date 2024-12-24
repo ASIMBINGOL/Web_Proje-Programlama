@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Web_Proje.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Net.Http;
+using System.Text.Json.Serialization;
 
 public class RandevuController : Controller
 {
@@ -82,6 +84,17 @@ public class RandevuController : Controller
             }
 
 
+            var MesaiGunu =_context.CalismaSaatleri.Where(c=>c.CalisanID==model.CalisanID).Select(c=>c.Gun==model.Tarih.DayOfWeek);
+
+
+             if (MesaiGunu == null)
+             {
+                  // Eğer mesai saatleri içinde değilse, hata mesajı glönder
+                TempData["msj"]="Bu Gunde de Çalışanımız Çalışmıyor Ya Çalışanı Ya Da Gunu Değişin";
+                return RedirectToAction("RandevuAl",model);
+            }
+
+
 
 
             // Aynı çalışana, aynı tarih ve saatte başka bir randevu varsa hata döndür
@@ -115,7 +128,7 @@ public class RandevuController : Controller
             _context.SaveChanges();
 
             // Başarılı bir işlem sonrası listeye yönlendirme
-            return RedirectToAction("Index","Musteri");
+            return RedirectToAction("Index","Musteri"); //Randevularima yönlendirilecek.
         }
 
         // Model hatalıysa tekrar aynı View döndürülür
@@ -127,6 +140,7 @@ public class RandevuController : Controller
                             .ToList();
         return View(model);
     }
+
 
    /*  public IActionResult RandevuListesi()
     {

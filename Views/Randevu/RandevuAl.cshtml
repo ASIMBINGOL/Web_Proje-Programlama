@@ -38,16 +38,21 @@
 <form asp-action="RandevuAl" asp-controller="Randevu" method="post">
     <div>
         <label asp-for="Tarih"></label>
-        <input asp-for="Tarih" type="date" class="form-control" />
+        <input asp-for="Tarih" type="date"  id="Tarih" name="Tarih" class="form-control" />
         <span asp-validation-for="Tarih" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Saat"></label>
-        <input asp-for="Saat" type="time" step="3600" class="form-control" />
-        <span asp-validation-for="Saat" class="text-danger"></span>
-    </div>
-
+   <div class="form-group">
+    <label asp-for="Saat">Randevu Saati</label>
+    <select asp-for="Saat" class="form-control">
+        <option value="">Saati seçiniz</option>
+        @for (int i = 7; i <= 17; i++)  
+        {
+            <option value="@string.Format("{0:00}:00:00", i)">@i:00</option>  <!-- Saat başları -->
+        }
+    </select>
+    <span asp-validation-for="Saat" class="text-danger"></span>
+</div>
     <div>
         <label for="CalisanID">Çalışan:</label>
         <select asp-for="CalisanID" class="form-control">
@@ -79,3 +84,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.13/jquery.validate.unobtrusive.min.js"></script>
 }
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date();
+        const minDate = today.toISOString().split("T")[0]; // Bugünün tarihi
+        const maxDate = new Date(today.setDate(today.getDate() + 14)) // Bugünden itibaren 14 gün
+                          .toISOString()
+                          .split("T")[0]; // Maksimum tarih
+
+        const dateInput = document.getElementById("Tarih");
+        dateInput.setAttribute("min", minDate); // Min tarih
+        dateInput.setAttribute("max", maxDate); // Max tarih
+    });
+</script>
+
