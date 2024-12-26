@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSXNsZW1MaXN0ZWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/asimb/Desktop/Web_Proje/Views/Admin/Onayla.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT25heWxhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/asimb/Desktop/Web_Proje/Views/Home/CalisanBilgi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYWxpc2FuQmlsZ2kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,6 +74,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/asimb/Desktop/Web_Proje/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asimb/Desktop/Web_Proje/Views/IslemlerConsumeApi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNsZW1sZXJDb25zdW1lQXBpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asimb/Desktop/Web_Proje/Views/IslemlerConsumeApi/Index2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNsZW1sZXJDb25zdW1lQXBpXEluZGV4Mi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/asimb/Desktop/Web_Proje/Views/LogIn/Login.cshtml]
@@ -84,12 +96,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/asimb/Desktop/Web_Proje/Views/RandevuConsumeApi/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dUNvbnN1bWVBcGlcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/asimb/Desktop/Web_Proje/Views/Randevu/RandevuAl.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxSYW5kZXZ1QWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asimb/Desktop/Web_Proje/Views/Resim/Sonuc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzaW1cU29udWMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asimb/Desktop/Web_Proje/Views/Resim/Yukle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzaW1cWXVrbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/asimb/Desktop/Web_Proje/Views/Shared/Error.cshtml]

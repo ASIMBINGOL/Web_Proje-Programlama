@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
+builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<KuaforContext>(options =>{
     var config =builder.Configuration;

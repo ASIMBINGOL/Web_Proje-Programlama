@@ -1,0 +1,10 @@
+<h2>Önerilen Tarz</h2>
+
+@if (ViewBag.Resim != null)
+{
+    <img src="data:image/png;base64,@ViewBag.Resim" alt="Sonuç Resim" />
+}
+else
+{
+    <p>Bir hata oluştu.</p>
+}

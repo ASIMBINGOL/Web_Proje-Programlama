@@ -1,0 +1,33 @@
+@model IEnumerable<Web_Proje.Models.Randevu>
+
+<h1>Randevu Listesi</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Randevu ID</th>
+            <th>Müşteri ID</th>
+            <th>Çalışan ID</th>
+            <th>İşlem ID</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Onay Durumu</th>
+            <th>Onaylama İşlemi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RandevuID</td>
+                <td>@item.MusteriID</td>
+                <td>@item.CalisanID</td>
+                <td>@item.IslemID</td>
+                <td>@item.Tarih.ToShortDateString()</td>
+                <td>@item.Saat</td>
+                <td>@(item.OnayDurumu ? "Onaylandı" : "Onaylanmadı")</td>
+                <td><a asp-controller="Admin" asp-action="Onayla" asp-route-id="@item.RandevuID" class="btn btn-primary">Onayla</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

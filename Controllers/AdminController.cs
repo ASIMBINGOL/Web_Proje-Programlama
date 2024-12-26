@@ -186,5 +186,28 @@ namespace Web_Proje.Controllers
 
         return RedirectToAction("Index");
        }
+
+
+    [HttpGet]
+    public ActionResult Onayla(int id)
+    {
+        // Randevular tablosundan id'ye göre ilgili randevuyu al
+        var randevu = _context.Randevular.FirstOrDefault(r => r.RandevuID == id);
+
+        if (randevu != null)
+        {
+            // OnayDurumu'nu "Onayla" olarak değiştir
+            randevu.OnayDurumu = true;
+
+            // Değişiklikleri kaydet
+            _context.SaveChanges();
+        }
+
+        // Güncellenen randevular listesini tekrar al
+        var randevular = _context.Randevular.ToList();
+
+        // Randevular listesini view'e gönder
+        return View(randevular);
+    }
     }
 }   
