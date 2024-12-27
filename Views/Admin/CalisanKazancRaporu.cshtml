@@ -1,0 +1,23 @@
+@model IEnumerable<CalisanKazancViewModel>
+
+<h1>Çalışan Bazlı Toplam Kazanç</h1>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Çalışan ID</th>
+            <th>Çalışan Ad Soyad</th>
+            <th>Toplam Kazanç</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CalisanID</td>
+                <td>@item.CalisanAdSoyad</td>
+                <td>@item.ToplamKazanc.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

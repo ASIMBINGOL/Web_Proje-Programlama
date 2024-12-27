@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FsaXNhbkVrbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/asimb/Desktop/Web_Proje/Views/Admin/CalisanKazancRaporu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FsaXNhbkthemFuY1JhcG9ydS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/asimb/Desktop/Web_Proje/Views/Admin/CalisanListele.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FsaXNhbkxpc3RlbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/asimb/Desktop/Web_Proje/Views/IslemlerConsumeApi/Ekle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNsZW1sZXJDb25zdW1lQXBpXEVrbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/asimb/Desktop/Web_Proje/Views/IslemlerConsumeApi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNsZW1sZXJDb25zdW1lQXBpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -94,6 +102,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/asimb/Desktop/Web_Proje/Views/Musteri/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/asimb/Desktop/Web_Proje/Views/Musteri/Randevularim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVzdGVyaVxSYW5kZXZ1bGFyaW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/asimb/Desktop/Web_Proje/Views/Randevu/RandevuAl.cshtml]

@@ -37,7 +37,39 @@ namespace Web_Proje.Controllers
         }
         return View(model);
         }  
-  
-        
+
+        public IActionResult Randevularim()
+        {
+            // Oturumdan müşteri ID'sini al
+            var musteriId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (musteriId == null)
+            {
+                // Eğer oturumda müşteri ID'si yoksa, giriş sayfasına yönlendirin
+                return RedirectToAction("Login", "Account");
+            }
+
+           int musteriIdint=int.Parse(musteriId);
+
+            // LINQ sorgusu
+            var randevular = (from r in _context.Randevular
+                            join c in _context.Calisanlar on r.CalisanID equals c.CalisanID
+                            join i in _context.Islemler on r.IslemID equals i.IslemID
+                            join m in _context.Musteri on r.MusteriID equals m.MUsteriID
+                            where r.MusteriID == musteriIdint // Sadece oturumdaki müşteri ID'sini al
+                            select new RandevuViewModel
+                            {
+                                RandevuID = r.RandevuID,
+                                MusteriAdSoyad = m.AdSoyad,
+                                CalisanAdSoyad = c.AdSoyad,
+                                IslemAdi = i.IslemAdi,
+                                Tarih = r.Tarih,
+                                Saat = r.Saat,
+                                OnayDurumu2=r.OnayDurumu
+                                
+                            }).ToList();
+
+            return View(randevular);
+        }
+   
     }
 }

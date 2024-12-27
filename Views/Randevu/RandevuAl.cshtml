@@ -1,7 +1,7 @@
 @model Randevu
 
+@if(TempData["msj"]!=null){<div class="alert alert-warning">@TempData["msj"]</div>}
 <h2>Randevu Al</h2>
-<div class="alert-danger">@TempData["msj"]</div>
 <h2>Çalışanlar ve Mesai Bilgileri</h2>
 <table class="table table-bordered">
     <thead>

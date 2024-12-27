@@ -114,7 +114,7 @@ public class RandevuController : Controller
                 ViewBag.Islemler = _context.Islemler
                                    .Select(i => new { i.IslemID, i.IslemAdi })
                                    .ToList();
-               TempData["msj"]="Bu Saat de Çalışanımız Dolu Lütfen Çalışanı Ya Da Saati Değişin";
+               TempData["msj"]="Bu Saat de Çalışanımızın Randevusu dolu.";
                 return RedirectToAction("RandevuAl",model);
             }
 
@@ -151,17 +151,5 @@ public class RandevuController : Controller
         return View(randevular);
     }*/
 
-
 }
 
-    // Randevuyu onaylamak için GET metodu
-  /*  [HttpGet]
-    public async Task<IActionResult> RandevuOnay(int randevuId)
-    {
-        var randevu = await _context.Randevular.FindAsync(randevuId);
-        if (randevu == null)
-            return NotFound(new { message = "Randevu bulunamadı." });
-
-        // Randevu bilgilerini view'e gönder
-        return View(randevu);
-    }*/

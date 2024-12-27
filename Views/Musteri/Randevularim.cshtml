@@ -4,7 +4,7 @@
 
 @if (Model != null && Model.Any())
 {
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Randevu ID</th>
@@ -14,7 +14,6 @@
                 <th>Tarih</th>
                 <th>Saat</th>
                 <th>Onay Durumu</th>
-                <th>Onaylama İşlemi</th>
             </tr>
         </thead>
         <tbody>
@@ -28,19 +27,6 @@
                     <td>@item.Tarih.ToShortDateString()</td>
                     <td>@item.Saat.ToString(@"hh\:mm")</td>
                    <td>@(item.OnayDurumu2 ? "Onaylandı" : "Onaylanmadı")</td>
-                   <td>
-                    @if(!@item.OnayDurumu2)
-                    {
-                        <a asp-controller="Admin" asp-action="Onayla" asp-route-id="@item.RandevuID" class="btn btn-primary">Onayla</a>
-                    }
-                    else
-                    {
-                        <p>Zaten Onaylanmış</p>
-                    }
-                </td>
-
-                  
-                  
                 </tr>
             }
         </tbody>

@@ -188,11 +188,32 @@ namespace Web_Proje.Controllers
        }
 
 
+
+    public IActionResult Onayla()
+    {
+           var randevular = (from r in _context.Randevular
+                      join c in _context.Calisanlar on r.CalisanID equals c.CalisanID
+                      join i in _context.Islemler on r.IslemID equals i.IslemID
+                      join m in _context.Musteri on r.MusteriID equals m.MUsteriID
+                      select new RandevuViewModel
+                      {
+                          RandevuID = r.RandevuID,
+                          MusteriAdSoyad = m.AdSoyad,
+                          CalisanAdSoyad = c.AdSoyad,
+                          IslemAdi = i.IslemAdi,
+                          Tarih = r.Tarih,
+                          Saat = r.Saat,
+                          OnayDurumu2=r.OnayDurumu
+                      }).ToList();
+
+    return View(randevular);
+    }
+
     [HttpGet]
-    public ActionResult Onayla(int id)
+    public async Task<ActionResult> Onayla(int id)
     {
         // Randevular tablosundan id'ye göre ilgili randevuyu al
-        var randevu = _context.Randevular.FirstOrDefault(r => r.RandevuID == id);
+        var randevu = await _context.Randevular.FirstOrDefaultAsync(r => r.RandevuID == id);
 
         if (randevu != null)
         {
@@ -200,14 +221,43 @@ namespace Web_Proje.Controllers
             randevu.OnayDurumu = true;
 
             // Değişiklikleri kaydet
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        // Güncellenen randevular listesini tekrar al
-        var randevular = _context.Randevular.ToList();
+          var randevular = (from r in _context.Randevular
+                      join c in _context.Calisanlar on r.CalisanID equals c.CalisanID
+                      join i in _context.Islemler on r.IslemID equals i.IslemID
+                      join m in _context.Musteri on r.MusteriID equals m.MUsteriID
+                      select new RandevuViewModel
+                      {
+                          RandevuID = r.RandevuID,
+                          MusteriAdSoyad = m.AdSoyad,
+                          CalisanAdSoyad = c.AdSoyad,
+                          IslemAdi = i.IslemAdi,
+                          Tarih = r.Tarih,
+                          Saat = r.Saat,
+                          OnayDurumu2=r.OnayDurumu
+                      }).ToList();
 
-        // Randevular listesini view'e gönder
-        return View(randevular);
+    return View(randevular);
+}
+
+    public IActionResult CalisanKazancRaporu()
+    {
+        var kazancRaporu = _context.Randevular
+            .Where(r => r.OnayDurumu) // Sadece onaylanmış randevular
+            .GroupBy(r => r.CalisanID) // ÇalışanID'ye göre gruplama
+            .Select(grup => new CalisanKazancViewModel
+            {
+                CalisanID = grup.Key,
+                CalisanAdSoyad = _context.Calisanlar.FirstOrDefault(c => c.CalisanID == grup.Key).AdSoyad,
+                ToplamKazanc = grup.Sum(r => _context.Islemler.FirstOrDefault(i => i.IslemID == r.IslemID).Ucret)
+            })
+            .ToList();
+
+        return View(kazancRaporu);
     }
+
+
     }
 }   

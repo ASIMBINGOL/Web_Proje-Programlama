@@ -1,15 +1,12 @@
-@model ResimYuklemeModel
-
-<h2>Resim Yükle</h2>
-
-<form asp-action="Yukle" asp-controller="Resim" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="Resim">Resim Seçin:</label>
-        <input type="file" name="Resim" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Yükle</button>
-</form>
-
-<div class="text-danger">
-    @TempData["Hata"]
+<div class="row mb-4 mt-1">
+   
+        <form asp-action="UploadImage" method="post" enctype="multipart/form-data" class="mb-4">
+            <div class="form-group">
+                <label for="image" class="form-label">Yüz Şeklini ve Uyan Saç Modelleri Görmek İster misin ?</label>
+                <br />
+            <label for="image" class="form-label">Yüz Resmini Yükle:</label>
+                <input type="file" name="image" accept="image/jpeg" required class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Gönder</button>
+        </form>
 </div>
