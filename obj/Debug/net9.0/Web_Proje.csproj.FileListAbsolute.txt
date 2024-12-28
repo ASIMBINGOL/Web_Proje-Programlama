@@ -130,7 +130,6 @@ C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\Web_Proje.sourcelink.json
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\scopedcss\bundle\Web_Proje.styles.css
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\scopedcss\projectbundle\Web_Proje.bundle.scp.css
-C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\swxgvh74dd-b9sayid5wm.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\v6wuvmu687-61n19gt1b8.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\vjhkxze91t-xtxxf3hu2r.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\49n8gugxhg-bqjiyaj88i.gz
@@ -207,6 +206,7 @@ C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\refint\Web_Proje.dll
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\Web_Proje.pdb
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\Web_Proje.genruntimeconfig.cache
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\ref\Web_Proje.dll
+C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\tepu3oojf4-sjf1gegwmg.gz
 C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\oy5arxx0dd-sjf1gegwmg.gz
-C:\Users\asimb\Desktop\Web_Proje\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\asimb\Desktop\Web_Proje\obj\Debug\net9.0\compressed\swxgvh74dd-iolfx33ynh.gz

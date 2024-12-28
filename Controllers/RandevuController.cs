@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Net.Http;
 using System.Text.Json.Serialization;
-
+using Microsoft.AspNetCore.Authorization;
+[Authorize(Roles ="user")]
 public class RandevuController : Controller
 {
     private readonly KuaforContext _context;
@@ -128,7 +129,7 @@ public class RandevuController : Controller
             _context.SaveChanges();
 
             // Başarılı bir işlem sonrası listeye yönlendirme
-            return RedirectToAction("Index","Musteri"); //Randevularima yönlendirilecek.
+            return RedirectToAction("Randevularim","Musteri"); //Randevularima yönlendirilecek.
         }
 
         // Model hatalıysa tekrar aynı View döndürülür

@@ -7,8 +7,6 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Randevu ID</th>
-                <th>Müşteri Ad Soyad</th>
                 <th>Çalışan Ad Soyad</th>
                 <th>İşlem Adı</th>
                 <th>Tarih</th>
@@ -20,8 +18,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.RandevuID</td>
-                    <td>@item.MusteriAdSoyad</td>
+
                     <td>@item.CalisanAdSoyad</td>
                     <td>@item.IslemAdi</td>
                     <td>@item.Tarih.ToShortDateString()</td>

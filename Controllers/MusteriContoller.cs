@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -33,11 +34,11 @@ namespace Web_Proje.Controllers
         model.KayitTarihi=DateTime.Now;
         _context.Musteri.Add(model);
         await _context.SaveChangesAsync();
-        return RedirectToAction("Index");
+        return RedirectToAction("Login","LogIn");
         }
         return View(model);
         }  
-
+       [Authorize(Roles ="user")]
         public IActionResult Randevularim()
         {
             // Oturumdan müşteri ID'sini al
@@ -45,7 +46,8 @@ namespace Web_Proje.Controllers
             if (musteriId == null)
             {
                 // Eğer oturumda müşteri ID'si yoksa, giriş sayfasına yönlendirin
-                return RedirectToAction("Login", "Account");
+                TempData["msj"]="İlk Önce Giriş Yapın";
+                return RedirectToAction("Login", "LogIn");
             }
 
            int musteriIdint=int.Parse(musteriId);

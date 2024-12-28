@@ -1,31 +1,87 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light background */
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.navbar {
+  background-color: #343a40; /* Dark header */
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand, .nav-link {
+  color: #f8f9fa !important; /* Light text */
+}
+
+.hero-section {
+  background: url('https://www.the-barbershop-toulouse.fr/sx-content/uploads/parallax/medium1200/parallaxe.jpg') no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin: 20px 0;
+}
+
+.hero-section .btn {
+  background-color: #e91e63; /* Pink button */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.hero-section .btn:hover {
+  background-color: #d81b60;
+}
+
+footer {
+  background-color: #343a40;
+  color: #f8f9fa;
+  position:fixed;
+  height: 20px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+footer a {
+  color: #f8f9fa;
+}
+
+.services {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.services .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.services .card:hover {
+  transform: translateY(-10px);
+}
+
+.welcome-section {
+  color: white; /* Yazıyı beyaz yapıyoruz, resme karşı daha belirgin olması için */
+  text-align: center; /* Yazıyı ortaya yerleştiriyoruz */
+  padding: 150px 0; /* Üst ve alt kısımdan boşluk bırakıyoruz */
+}
+
+.welcome-section h1 {
+  font-size: 3rem; /* Yazının büyüklüğünü ayarlıyoruz */
+  font-weight: bold; /* Yazıyı kalın yapıyoruz */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Yazıya gölge ekliyoruz, daha belirgin görünmesini sağlar */
 }

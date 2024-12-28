@@ -1,41 +1,40 @@
-@model string
-
 @{
-    ViewData["Title"] = "API Yanıtı";
-    // Model içeriğini JSON formatından deserializable bir nesneye dönüştürelim
-    var jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(Model);
-    var shapes = jsonResponse?.data?.shapes;
-    var suggestions = jsonResponse?.data?.suggestions;
+    ViewData["Title"] = "API İşlem Sonucu";
 }
 
-<h2>Barber AI</h2>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Yapay Öneri</h2>
 
-@if (shapes != null && suggestions != null)
-{
-    <h3>Yüz Şekilleri ve Olasılıklar</h3>
-    <ul style="display: flex; flex-direction: row; justify-content: space-around; gap: 10px;">
-        @foreach (var shape in shapes)
+        @if (!string.IsNullOrEmpty(ViewBag.Base64Image))
         {
-            <li>
-                <strong>@shape.className:</strong>
-                @String.Format("{0:P2}", Convert.ToDouble(shape.probability))
-            </li>
-        }
-    </ul>
-
-    <h3>Önerilen Saç Modelleri</h3>
-    <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; background-color: #eeeeee;">
-        @foreach (var suggestion in suggestions)
-        {
-            <div style="margin-bottom: 20px;">
-                <img src="@suggestion" alt="Saç Modeli" style="width: 200px; height: auto;" />
+            <div class="text-center">
+                <h3 class="mb-3">Görsel:</h3>
+                <img src="data:image/jpeg;base64,@ViewBag.Base64Image" alt="Sonuç Görseli" class="img-thumbnail" style="max-width: 30%; height: auto;" />
             </div>
         }
-    </div>
-}
-else
-{
-    <p>API yanıtı işlenemedi veya eksik bilgiler içeriyor.</p>
-}
+        else
+        {
+            <div class="alert alert-danger text-center">
+                <strong>Görsel yüklenemedi.</strong>
+            </div>
+        }
 
-<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Ana Sayfaya Dön</a>
+        <div class="text-center mt-4">
+            <a href="/Foto/Yukle" class="btn btn-primary">Yeniden dene</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

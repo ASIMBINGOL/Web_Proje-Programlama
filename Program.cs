@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<KuaforContext>(options =>{
@@ -16,6 +16,14 @@ builder.Services.AddDbContext<KuaforContext>(options =>{
     var connectionString=config.GetConnectionString("database");
      options.UseSqlite(connectionString);
 });
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/LogIn/Login"; // kullanici giris yapmazsa yonlenecegi sayfa
+        options.AccessDeniedPath = "/Resim/Error"; // kullanici rolu eksikse yonlenecegi sayfa
+        });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.

@@ -6,7 +6,6 @@
     <title>Can Kuaför</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Web_Proje.styles.css" asp-append-version="true" />
 </head>
 <body>
     <!-- Header -->
@@ -21,28 +20,49 @@
                 <div class="navbar-collapse collapse d-lg-inline-flex justify-content-end">
                     <ul class="navbar-nav">
                         <ul class="navbar-nav ms-auto">
-                            @if(User.Identity!.IsAuthenticated){//!null kontrolü
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="CalisanBilgi">Çalışanlarımız</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="navlink">@User.Identity.Name</a>
-                            </li>
-                             <li class="nav-item">
-                                <a href="/LogIn/Logout" class="navlink">Çıkış</a>
-                            </li>
-                            }
-                            else{
-                                      <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Musteri" asp-action="Create">Sign Up</a>
+                             @if (User.Identity!.IsAuthenticated)
+                {
+                    @if (User.IsInRole("admin")) 
+                    {
+                        <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="CalisanKazancRaporu">Çalışan Kazanç</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="LogIn" asp-action="Login">Sign In</a>
+                             <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="CalisanListele">Çalışanlar</a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="CalisanBilgi">Çalışanlarımız</a>
+                        <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="IslemListele">İşlemler</a>
                         </li>
-                            }
+                        <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Onayla">Randevu Onayla</a>
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="LogIn" asp-action="Logout">Çıkış</a>
+                        </li>
+                    }
+
+                    else if(User.IsInRole("user"))
+                    {
+                        <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Randevu" asp-action="RandevuAl">Randevu Al</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Musteri" asp-action="Randevularim">Randevularım</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="LogIn" asp-action="Logout">Çıkış</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="LogIn" asp-action="Login">Giriş</a>
+                    </li>
+                    <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="Musteri" asp-action="Create">Kayıt Ol</a>
+                    </li>
+                }
                              
                         </ul>
                     </ul>

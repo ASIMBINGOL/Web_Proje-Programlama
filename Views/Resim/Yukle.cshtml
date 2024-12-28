@@ -1,12 +1,17 @@
-<div class="row mb-4 mt-1">
-   
-        <form asp-action="UploadImage" method="post" enctype="multipart/form-data" class="mb-4">
-            <div class="form-group">
-                <label for="image" class="form-label">Yüz Şeklini ve Uyan Saç Modelleri Görmek İster misin ?</label>
-                <br />
-            <label for="image" class="form-label">Yüz Resmini Yükle:</label>
-                <input type="file" name="image" accept="image/jpeg" required class="form-control" />
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Gönder</button>
-        </form>
-</div>
+<form method="post" enctype="multipart/form-data" asp-action="Yukle">
+    <div>
+        <label for="image">Resim Yükle:</label>
+        <input type="file" name="image" id="image" />
+    </div>
+    <div>
+        <label for="hairType">Saç Tipi:</label>
+        <input type="text" name="hairType" id="hairType" placeholder="Örn: 201" />
+    </div>
+    <button type="submit">Gönder</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.ApiResponse))
+{
+    <h3>API Yanıtı:</h3>
+    <pre>@ViewBag.ApiResponse</pre>
+}
