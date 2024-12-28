@@ -26,6 +26,29 @@ namespace Web_Proje.Controllers
        }
 
     
+       [HttpGet]
+       public async Task<IActionResult>CalisanSil(int? id)
+       {
+        if(id==null){
+            return NotFound();
+        }
+        var IslemDelete =await _context.Calisanlar.FindAsync(id);
+        if(IslemDelete==null) {return NotFound();}
+        return View(IslemDelete);
+       }
+
+       [HttpPost]
+       
+       public async Task<IActionResult>CalisanSil([FromForm] int id)
+       {
+        var IslemDelete=await _context.Calisanlar.FindAsync(id);
+        if(IslemDelete==null){return NotFound();}
+        _context.Calisanlar.Remove(IslemDelete);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("CalisanListele");
+       }
+
     public async Task <IActionResult> CalisanListele()
       { 
         var clsnListe=(from c in _context.Calisanlar
@@ -99,9 +122,11 @@ namespace Web_Proje.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult>CalisanEkle(Calisan model)
         {
+            if(ModelState.IsValid){
             _context.Calisanlar.Add(model);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index","Admin");
+            return RedirectToAction("CalisanListele","Admin");}
+            return View(model);
         }
 
         public IActionResult IslemEKle()
@@ -113,10 +138,11 @@ namespace Web_Proje.Controllers
         [HttpPost]
         public async Task<IActionResult>IslemEKle(Islemler model)//async çünkü bir sipariş alındığı zaman arka da hazırlanır ama sipariş alınmaya devam eder
         {
+            if(ModelState.IsValid){
             _context.Islemler.Add(model);
             await _context.SaveChangesAsync(); //async olduğu için await önemli
-            return RedirectToAction("Index","Admin");
-                    //deneme repo
+            return RedirectToAction("IslemListele","Admin");}
+            return View(model);
         }
 
 
@@ -184,7 +210,7 @@ namespace Web_Proje.Controllers
         _context.Islemler.Remove(IslemDelete);
         await _context.SaveChangesAsync();
 
-        return RedirectToAction("Index");
+        return RedirectToAction("IslemListele");
        }
 
 
@@ -253,7 +279,8 @@ namespace Web_Proje.Controllers
                 CalisanAdSoyad = _context.Calisanlar.FirstOrDefault(c => c.CalisanID == grup.Key).AdSoyad,
                 ToplamKazanc = grup.Sum(r => _context.Islemler.FirstOrDefault(i => i.IslemID == r.IslemID).Ucret)
             })
-            .ToList();
+            .ToList()
+            .OrderByDescending(x=>x.ToplamKazanc);
 
         return View(kazancRaporu);
     }

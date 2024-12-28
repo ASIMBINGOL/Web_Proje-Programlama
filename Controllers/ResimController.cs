@@ -33,7 +33,7 @@ public async Task<IActionResult> Yukle(IFormFile image, string hairType)
         return View("Yukle");
     }
 
-    var apiKey = "d3e1929c58mshdaeafa67424bfdep1ecdd5jsne23dd72d7bd2";
+    var apiKey = "af661ef0b7msh0910117e83095d0p16fca2jsnec5fe1db4c4c";
     var apiHost = "hairstyle-changer.p.rapidapi.com";
     var apiUrl = "https://hairstyle-changer.p.rapidapi.com/huoshan/facebody/hairstyle";
 
@@ -93,7 +93,7 @@ public async Task<IActionResult> Yukle(IFormFile image, string hairType)
 
 [AllowAnonymous]
 public IActionResult Error(string? url){
-    return RedirectToAction("Index","Home");
+    return View();
 
 }
 

@@ -6,10 +6,14 @@
 <div class="mb-3">
      <label asp-for="IslemAdi" class="form-label">İşlem Adı</label>
      <input type="text" asp-for="IslemAdi" class="form-control">
+     <span asp-validation-for="IslemAdi" class="text-danger"></span>
+     
 </div>
 <div class="mb-3">
      <label asp-for="Ucret" class="form-label">İşlem Ücreti</label>
      <input type="text" asp-for="Ucret" class="form-control">
+     <span asp-validation-for="Ucret" class="text-danger"></span>
+
 </div>
 
 

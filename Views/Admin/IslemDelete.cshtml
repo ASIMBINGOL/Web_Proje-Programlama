@@ -4,6 +4,6 @@
 <form action="IslemDelete" method="post">
  <input type="hidden" value="@Model.IslemID" name="id">
  <button type="submit" class="btn btn-danger">Evet</button>
- <button asp-action="Index" class="btn btn-primary">Hayır</button>
+ <button asp-controller="Admin" asp-action="IslemListele" class="btn btn-primary">Hayır</button>
 </form>
 </p>

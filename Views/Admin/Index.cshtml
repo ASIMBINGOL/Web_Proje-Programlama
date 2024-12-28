@@ -1,0 +1,97 @@
+<style>
+/* Container */
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    width: 90%;
+}
+
+/* Row düzenlemesi */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Öğelerin sarmasını sağlar */
+    gap: 15px; /* Her div arasına boşluk ekler */
+    justify-content: center; /* Kartları merkeze hizalar */
+}
+
+/* Kolonların boyutlandırılması */
+.col-md-3 {
+    flex: 1 1 23%; /* Flexbox ile her div %23 genişliğe sahip olacak */
+    min-width: 280px; /* Minumum genişlik */
+    max-width: 23%; /* Kart genişliği %23'ü aşmasın */
+    box-sizing: border-box; /* İçerik, padding ve border ile birlikte box model hesaplanır */
+}
+
+/* Card stili */
+.card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+}
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Hoş Geldin ADMİN!</h1>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services">
+    <div class="container">
+        <h2>Hizmetlerimiz</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Sakal Traşı</h3>
+                    <p>Pürüzsüz ve temiz bir tıraş deneyimi yaşayın.</p>
+                    <img src="https://static.tildacdn.com/tild6166-3166-4436-b464-306533626364/noroot.png" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Maske, Yıkama ve Bakım</h3>
+                    <p>Maske ve yıkama üstüne bakım ile yeniden doğmuş gibi hissedin.</p>
+                    <img src="https://avatars.mds.yandex.net/i?id=5bfb3997f51ea9ea416af3f51874115985289799-8977890-images-thumbs&n=13" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Boyama</h3>
+                    <p>Saçınızı istediğiniz renge boyatın, tarzınıza tarz katın.</p>
+                    <img src="https://th.bing.com/th/id/OIP.iSTB7YrJIaFgxv6nPgR4HQHaHa?rs=1&pid=ImgDetMain" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Saç Kesimi</h3>
+                    <p>Profesyonel ve şık bir saç kesimi deneyimi yaşayın.</p>
+                    <img src="https://i.pinimg.com/originals/f9/75/36/f97536c5839b64b66c807fcefb440a78.jpg" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

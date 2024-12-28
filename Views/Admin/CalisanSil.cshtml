@@ -1,0 +1,9 @@
+@model Calisan
+<b>@Model.AdSoyad</b> Çalışanı silmek istiyor musunz?
+<p>
+<form action="CalisanSil" method="post">
+ <input type="hidden" value="@Model.CalisanID" name="id">
+ <button type="submit" class="btn btn-danger">Evet</button>
+ <button asp-controller="Admin" asp-action="CalisanListele" class="btn btn-primary">Hayır</button>
+</form>
+</p>

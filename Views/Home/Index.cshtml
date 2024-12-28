@@ -1,5 +1,5 @@
-﻿  <style>
-    /* Container */
+﻿<style>
+/* Container */
 .container {
     margin: 0 auto;
     padding: 20px;
@@ -10,13 +10,15 @@
 .row {
     display: flex;
     flex-wrap: wrap; /* Öğelerin sarmasını sağlar */
-    gap: 20px; /* Her div arasına boşluk ekler */
+    gap: 15px; /* Her div arasına boşluk ekler */
+    justify-content: center; /* Kartları merkeze hizalar */
 }
 
 /* Kolonların boyutlandırılması */
-.col-md-4 {
-    flex: 1 1 30%; /* Flexbox ile her div %30 genişliğe sahip olacak */
-    min-width: 280px; /* Minumum genişlik, kutular çok dar olmasın diye */
+.col-md-3 {
+    flex: 1 1 23%; /* Flexbox ile her div %23 genişliğe sahip olacak */
+    min-width: 280px; /* Minumum genişlik */
+    max-width: 23%; /* Kart genişliği %23'ü aşmasın */
     box-sizing: border-box; /* İçerik, padding ve border ile birlikte box model hesaplanır */
 }
 
@@ -48,42 +50,52 @@
     font-size: 1rem;
     color: #555;
 }
-  </style>  
-  <!-- Hero Section -->
-    <section class="hero-section">
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
         <div class="container">
-            <h1>Welcome to Barber Shop</h1>
-            <p>Your style, our passion. Book your appointment today!</p>
-            <a asp-controller="Musteri" asp-action="Create" class="btn">Hemen Traş Olalım</a>
+            <h1>Berbere HoşGeldiniz</h1>
+            <p>Sizin tarzınız, bizim tutkumuz. Randevunuzu bugün alın!</p>
+            @if(User.Identity!.IsAuthenticated){<a asp-controller="Randevu" asp-action="RandevuAl" class="btn">Hemen Traş Olalım</a>}
+            
+            else{TempData["msj"]="Önce Giriş Yapmalısın";<a asp-controller="LogIn" asp-action="Login" class="btn">Hemen Traş Olalım</a>}
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
-       <div class="container">
-    <h2>Our Services</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card p-3">
-                <h3>Saç Kesimi</h3>
-                <p>Tercihlerinize göre şık bir saç kesimi yapın.</p>
-                <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f1d1ace4-d815-4dcc-8a24-06718d2bb893.__CR0,2,1464,625_PT0_SX1464_V1___.jpg" alt="">
+<!-- Services Section -->
+<section class="services">
+    <div class="container">
+        <h2>Hizmetlerimiz</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Sakal Traşı</h3>
+                    <p>Pürüzsüz ve temiz bir tıraş deneyimi yaşayın.</p>
+                    <img src="https://static.tildacdn.com/tild6166-3166-4436-b464-306533626364/noroot.png" alt="" class="img-fluid">
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3">
-                <h3>Sakal Traşı</h3>
-                <p>Pürüzsüz ve temiz bir tıraş deneyimi yaşayın.</p>
-                <img src="https://static.tildacdn.com/tild6166-3166-4436-b464-306533626364/noroot.png" alt="">
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Maske, Yıkama ve Bakım</h3>
+                    <p>Maske ve yıkama üstüne bakım ile yeniden doğmuş gibi hissedin.</p>
+                    <img src="https://avatars.mds.yandex.net/i?id=5bfb3997f51ea9ea416af3f51874115985289799-8977890-images-thumbs&n=13" alt="" class="img-fluid">
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card p-3">
-                <h3>Maske,Yıkama ve Bakım</h3>
-                <p>Maske ve yıkama üstüne Bakım ile yendiden doğmuş gibi hissedin.</p>
-                <img src="https://avatars.mds.yandex.net/i?id=5bfb3997f51ea9ea416af3f51874115985289799-8977890-images-thumbs&n=13" alt="">
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Boyama</h3>
+                    <p>Saçınızı istediğiniz renge boyatın, tarzınıza tarz katın.</p>
+                    <img src="https://th.bing.com/th/id/OIP.iSTB7YrJIaFgxv6nPgR4HQHaHa?rs=1&pid=ImgDetMain" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>Saç Kesimi</h3>
+                    <p>Profesyonel ve şık bir saç kesimi deneyimi yaşayın.</p>
+                    <img src="https://i.pinimg.com/originals/f9/75/36/f97536c5839b64b66c807fcefb440a78.jpg" alt="" class="img-fluid">
+                </div>
             </div>
         </div>
     </div>
-</div
-    </section>
+</section>

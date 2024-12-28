@@ -19,11 +19,6 @@ public class HomeController : Controller
         return View();
     }
 
-   /*  public async Task<IActionResult> CalisanBilgi()
-    {
-        var CalisanUzmBilgi= await _context.Calisanlar.Include(x=>x.Aciklama).Include(x=>x.islemler).ThenInclude(x=>x.IslemAdi).ToListAsync();
-           return View(CalisanUzmBilgi);
-    }*/
 
     public IActionResult Privacy()
     {

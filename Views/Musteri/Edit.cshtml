@@ -1,0 +1,49 @@
+@model Musteri
+
+ <h2>Bilgilerini GÜncelle</h2>
+ <hr>
+<form asp-asp-controller="Musteri" asp-action="Edit" method="post">
+      <input type="hidden" asp-for="MUsteriID">
+<div class="mb-3">
+     <label asp-for="MUsteriAd" class="form-label">Adınız</label>
+     <input type="text" asp-for="MUsteriAd" class="form-control">
+     <span asp-validation-for="MUsteriAd" class="text-danger"></span>
+
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriSoyad" class="form-label">Soyadınız</label>
+     <input type="text" asp-for="MUsteriSoyad" class="form-control">
+     <span asp-validation-for="MUsteriSoyad" class="text-danger"></span>
+
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriTelefon" class="form-label">Telefonunuz</label>
+     <input type="text" asp-for="MUsteriTelefon" class="form-control"> 
+     <span asp-validation-for="MUsteriTelefon" class="text-danger"></span>
+
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriEmail" class="form-label">Emailinz</label>
+     <input type="text" asp-for="MUsteriEmail" class="form-control">
+     <span asp-validation-for="MUsteriEmail" class="text-danger"></span>
+
+</div>
+
+<div class="mb-3">
+     <label asp-for="MUsteriSifre" class="form-label">Şifreniz</label>
+    <input type="text" asp-for="MUsteriSifre" class="form-control">
+     <span asp-validation-for="MUsteriSifre" class="text-danger"></span>
+
+</div>
+
+<div class="mb-3">
+     <label asp-for="KayitTarihi" class="form-label">Kayıt Tarihiniz</label>
+     <input type="text-area" asp-for="KayitTarihi" class="form-control"readonly>
+
+</div>
+<button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+ 

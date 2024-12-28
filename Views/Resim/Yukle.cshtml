@@ -1,17 +1,38 @@
-<form method="post" enctype="multipart/form-data" asp-action="Yukle">
-    <div>
-        <label for="image">Resim Yükle:</label>
-        <input type="file" name="image" id="image" />
-    </div>
-    <div>
-        <label for="hairType">Saç Tipi:</label>
-        <input type="text" name="hairType" id="hairType" placeholder="Örn: 201" />
-    </div>
-    <button type="submit">Gönder</button>
-</form>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Fotoğraf Yükle</h1>
+    <form method="post" enctype="multipart/form-data" asp-action="Yukle" class="border p-4 rounded">
+        <div class="form-group">
+            <label for="image">Resim Yükle:</label>
+            <input type="file" class="form-control-file" name="image" id="image" />
+        </div>
+        <div class="form-group">
+            <label for="hairType">Saç Tipi:</label>
+            <select class="form-select" name="hairType" id="hairType">
+                <option value="101">Bangs</option>
+                <option value="201">Long hair</option>
+                <option value="301">Bangs with long hair</option>
+                <option value="401">Medium hair increase</option>
+                <option value="402">Light hair increase</option>
+                <option value="403">Heavy hair increase</option>
+                <option value="502">Light curling</option>
+                <option value="503">Heavy curling</option>
+                <option value="603">Short hair</option>
+                <option value="801">Blonde</option>
+                <option value="901">Straight hair</option>
+                <option value="1001">Oil-free hair</option>
+                <option value="1101">Hairline fill</option>
+                <option value="1201">Smooth hair</option>
+                <option value="1301">Fill hair gap</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-2">Gönder</button>
+    </form>
 
-@if (!string.IsNullOrEmpty(ViewBag.ApiResponse))
-{
-    <h3>API Yanıtı:</h3>
-    <pre>@ViewBag.ApiResponse</pre>
-}
+    @if (!string.IsNullOrEmpty(ViewBag.ApiResponse))
+    {
+        <div class="mt-5">
+            <h3 class="text-center">API Yanıtı:</h3>
+            <pre class="p-3 bg-light border rounded">@ViewBag.ApiResponse</pre>
+        </div>
+    }
+</div>

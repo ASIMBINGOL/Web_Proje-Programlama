@@ -76,7 +76,7 @@ namespace Web_Proje.Controllers
                     var adminBilgileri = new List<Claim>();
 
                     adminBilgileri.Add(new Claim(ClaimTypes.NameIdentifier, admin.AdminId.ToString()));
-                    adminBilgileri.Add(new Claim(ClaimTypes.Name, ""));
+                    adminBilgileri.Add(new Claim(ClaimTypes.Name, "ADMİN"));
 
                     adminBilgileri.Add(new Claim(ClaimTypes.Role, "admin"));
 
@@ -98,7 +98,7 @@ namespace Web_Proje.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Kullanıcı adı veya şifre yanlış");
+                    TempData["msj"]="Yanlış Mail/Şifre";
                 }
             } 
             

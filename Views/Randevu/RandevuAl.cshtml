@@ -38,21 +38,22 @@
 <form asp-action="RandevuAl" asp-controller="Randevu" method="post">
     <div>
         <label asp-for="Tarih"></label>
-        <input asp-for="Tarih" type="date"  id="Tarih" name="Tarih" class="form-control" />
+        <input asp-for="Tarih" type="date" id="Tarih" name="Tarih" class="form-control" />
         <span asp-validation-for="Tarih" class="text-danger"></span>
     </div>
 
-   <div class="form-group">
-    <label asp-for="Saat">Randevu Saati</label>
-    <select asp-for="Saat" class="form-control">
-        <option value="">Saati seçiniz</option>
-        @for (int i = 7; i <= 17; i++)  
-        {
-            <option value="@string.Format("{0:00}:00:00", i)">@i:00</option>  <!-- Saat başları -->
-        }
-    </select>
-    <span asp-validation-for="Saat" class="text-danger"></span>
-</div>
+    <div class="form-group">
+        <label asp-for="Saat">Randevu Saati</label>
+        <select asp-for="Saat" class="form-control">
+            <option value="">Saati seçiniz</option>
+            @for (int i = 7; i <= 17; i++)
+            {
+                <option value="@string.Format("{0:00}:00:00", i)">@i:00</option>
+            }
+        </select>
+        <span asp-validation-for="Saat" class="text-danger"></span>
+    </div>
+
     <div>
         <label for="CalisanID">Çalışan:</label>
         <select asp-for="CalisanID" class="form-control">
@@ -67,14 +68,20 @@
 
     <div>
         <label for="IslemID">Hizmet:</label>
-        <select asp-for="IslemID" class="form-control">
+        <select id="IslemID" asp-for="IslemID" class="form-control">
             <option value="">Hizmet Seçin</option>
             @foreach (var islem in ViewBag.Islemler)
             {
-                <option value="@islem.IslemID">@islem.IslemAdi</option>
+                <option value="@islem.IslemID" data-fiyat="@islem.Ucret">@islem.IslemAdi</option>
             }
         </select>
         <span asp-validation-for="IslemID" class="text-danger"></span>
+    </div>
+
+    <!-- Ücret Bilgisi Input Alanı -->
+    <div>
+        <label for="Ucret">Ücret:</label>
+        <input type="text" id="Ucret" class="form-control" readonly value="Lütfen bir işlem seçin." />
     </div>
 
     <button type="submit" class="btn btn-primary">Randevu Al</button>
@@ -88,14 +95,27 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const today = new Date();
-        const minDate = today.toISOString().split("T")[0]; // Bugünün tarihi
-        const maxDate = new Date(today.setDate(today.getDate() + 14)) // Bugünden itibaren 14 gün
+        const minDate = today.toISOString().split("T")[0];
+        const maxDate = new Date(today.setDate(today.getDate() + 14))
                           .toISOString()
-                          .split("T")[0]; // Maksimum tarih
-
+                          .split("T")[0];
         const dateInput = document.getElementById("Tarih");
-        dateInput.setAttribute("min", minDate); // Min tarih
-        dateInput.setAttribute("max", maxDate); // Max tarih
+        dateInput.setAttribute("min", minDate);
+        dateInput.setAttribute("max", maxDate);
+
+        // Ücret Gösterme
+        const islemSelect = document.getElementById("IslemID");
+        const ucretInput = document.getElementById("Ucret");
+
+        islemSelect.addEventListener("change", function () {
+            const selectedOption = islemSelect.options[islemSelect.selectedIndex];
+            const ucret = selectedOption.getAttribute("data-fiyat");
+
+            if (ucret) {
+                ucretInput.value = `${ucret} ₺`;
+            } else {
+                ucretInput.value = "Lütfen bir işlem seçin.";
+            }
+        });
     });
 </script>
-

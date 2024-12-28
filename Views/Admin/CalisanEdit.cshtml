@@ -7,21 +7,29 @@
 <div class="mb-3">
      <label asp-for="CalisanAd" class="form-label">Çalışan Adı</label>
      <input type="text" asp-for="CalisanAd" class="form-control">
+     <span asp-validation-for="CalisanAd" class="text-danger"></span>
+
 </div>
 
 <div class="mb-3">
      <label asp-for="CalisanSoyad" class="form-label">Çalışan Soyadı</label>
      <input type="text" asp-for="CalisanSoyad" class="form-control">
+     <span asp-validation-for="CalisanSoyad" class="text-danger"></span>
+
 </div>
 
 <div class="mb-3">
      <label asp-for="CalisanTelefon" class="form-label">Çalışan Telefonu</label>
-     <input type="text" asp-for="CalisanTelefon" class="form-control">
+     <input type="text" asp-for="CalisanTelefon" class="form-control"> 
+     <span asp-validation-for="CalisanTelefon" class="text-danger"></span>
+
 </div>
 
 <div class="mb-3">
      <label asp-for="CalisanEmail" class="form-label">Email</label>
      <input type="text" asp-for="CalisanEmail" class="form-control">
+     <span asp-validation-for="CalisanEmail" class="text-danger"></span>
+
 </div>
 
 <div class="mb-3">
@@ -29,11 +37,15 @@
      <select asp-for="IslemID" asp-items="ViewBag.IslemlerListe" class="form-select">
            <option value="">Seçiniz</option>
      </select>
+     <span asp-validation-for="IslemID" class="text-danger"></span>
+
 </div>
 
 <div class="mb-3">
      <label asp-for="Aciklama" class="form-label">Çalışan Bilgisi</label>
      <input type="text-area" asp-for="Aciklama" class="form-control">
+     <span asp-validation-for="Aciklama" class="text-danger"></span>
+
 </div>
 <button type="submit" class="btn btn-primary">Çalışan Güncelle</button>
 </form>

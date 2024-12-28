@@ -38,7 +38,7 @@ namespace Web_Proje.Controllers
         }
         return View(model);
         }  
-       [Authorize(Roles ="user")]
+        [Authorize(Roles ="user")]
         public IActionResult Randevularim()
         {
             // Oturumdan müşteri ID'sini al
@@ -73,5 +73,44 @@ namespace Web_Proje.Controllers
             return View(randevular);
         }
    
+    [HttpGet]
+        public async Task<IActionResult>Edit(int? id)
+        {
+            if(id==null){return NotFound();}
+             var MusteriEdit =await _context.Musteri.FirstOrDefaultAsync(o=>o.MUsteriID==id);
+            if(MusteriEdit==null){return NotFound();}
+            return View(MusteriEdit);
+        }
+
+        
+        [HttpPost]
+        public async Task<IActionResult>Edit(int id,Musteri model)
+        {
+          if(id!=model.MUsteriID)
+          {
+            return NotFound();
+          }
+          if(ModelState.IsValid)
+          {
+            try
+            {   
+                _context.Update(model);//değişiklikleri yap
+                await _context.SaveChangesAsync();//veri tabanına uygula
+
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                if(!_context.Musteri.Any(o=>o.MUsteriID==model.MUsteriID)){
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+           return RedirectToAction("Index","Musteri");
+          }
+          return View(model);
+        }
     }
 }
